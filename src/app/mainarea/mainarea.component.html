@@ -1,0 +1,12 @@
+<div class="jumbotron" id="d1">
+  <div class="container">
+    <li *ngFor="let taskObject of tasks;let i = index">
+        
+      <i class="fas fa-trash" (click)="deleteTask(i)"></i>
+        <span [style.text-decoration]="taskObject.status?'line-through':'none'">{{taskObject.task}}</span>
+      <i class="fas fa-check" (click)="strikeTask(i)"></i>
+    </li>
+    <input type="text" #tv>
+    <button (click)="addTask(tv.value)">Add</button>
+  </div>
+</div>
