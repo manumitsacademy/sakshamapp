@@ -1,0 +1,42 @@
+<div class="row">
+  <table class="table">
+    
+    <tr>
+      <td>Name</td>
+      <td>Price</td>
+      <td>Rating</td>
+      <td>Img</td>
+    </tr>
+    <tr *ngFor="let prod of products;let e = even" [class]="e?'bg-success':'bg-danger'">
+      <td>{{prod.name}}</td>
+      <td>{{prod.price|currency:'GBP' }}</td>
+      <td>{{prod.rating|number:'7.2-4'}}</td>
+      <td>{{prod.img}}</td>
+    </tr>
+  </table>
+</div>
+
+
+<div id="d1" class="row">
+  <div class="col-6">
+      <h1>This is Parent Component</h1>
+      <h3 *ngFor="let product of products;let i = index">
+        <span (click)="selectProd(i)">{{product.name}}-{{product.rating}}</span>
+      </h3>
+  </div>
+  <div class="col-6">
+      <div *ngIf="selectedProduct then prodInfo;else thumbs"></div>
+      
+      <ng-template #prodInfo>
+          <app-child [productData]="selectedProduct" (subRating)="saveRating($event)"></app-child>
+      </ng-template>
+      
+      <ng-template #thumbs>
+        <div class="row">
+          <div class="col-3" *ngFor="let p of products">
+            <img [src]="p.img" width="100px">
+          </div>
+        </div>
+      </ng-template>
+  </div>  
+</div>

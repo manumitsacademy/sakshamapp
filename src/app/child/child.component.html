@@ -1,0 +1,13 @@
+<div id="d1">
+  <h1>This is Child Component</h1>
+  <div class="card" style="width:400px">
+    <img class="card-img-top" [src]="productData.img" alt="Card image" height="200px" width="200px">
+    <div class="card-body">
+      Name:<h4 class="card-title">{{productData.name}}</h4>
+      Model:<p class="card-text">{{productData.model}}</p>
+      Rating:<input type="text" [value]="productData.rating" #rat>
+      <button (click)="subRate(rat.value)">Submit Rating</button><br><br>
+      Price:<a href="#" class="btn btn-primary">{{productData.price}}</a>
+    </div>
+  </div>
+</div>
